@@ -59,9 +59,11 @@
 
 .btnLixi {
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .divSound {
+  cursor: pointer;
   position: absolute;
   right: 20px;
   bottom: 80px

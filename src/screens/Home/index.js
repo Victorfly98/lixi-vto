@@ -7,41 +7,56 @@ import icMuteSound from "../../images/ic_sound_mute.png";
 
 const Home = () => {
 	const [isLiXi, setIsLiXi] = useState(false);
-	const [isMute, setIsMute] = useState(false);
+	const [playAudio, setPlayAudio] = useState(false);
+	const [playVideo, setPlayVideo] = useState(true);
 
 	const onOpenLixi = async () => {
-		await setIsMute(false);
+		await setPlayAudio(false);
 		await setIsLiXi(!isLiXi);
 	};
 
-	const onOffMMute = () => {
-		setIsMute(!isMute);
+	const onPlayAudio = () => {
+		setPlayAudio(!playAudio);
+	};
+
+	const onPlayVideo = () => {
+		setPlayVideo(!playVideo);
 	};
 
 	return (
 		<div className={isLiXi ? "containerLiXi" : "container"}>
-			<div className="divSound">
-				<img
-					className="icSound"
-					alt="Sound"
-					src={isMute ? icMuteSound : icSound}
-					onClick={onOffMMute}
-				/>
-			</div>
-
 			{isLiXi ? (
-				<div style={{ position: "absolute", top: "22%" }}>
-					<ReactPlayer
-						className="playVideo"
-						loop
-						controls
-						playing={true}
-						muted={isMute}
-						url={config.video}
-					/>
-				</div>
+				<>
+					<div className="divSound">
+						<img
+							className="icSound"
+							alt="Sound"
+							src={playVideo ? icSound : icMuteSound}
+							onClick={onPlayVideo}
+						/>
+					</div>
+					<div style={{ position: "absolute", top: "22%" }}>
+						<ReactPlayer
+							className="playVideo"
+							loop
+							controls
+							playing={playVideo}
+							url={config.video}
+							onPlay={() => setPlayVideo(true)}
+							onPause={() => setPlayVideo(false)}
+						/>
+					</div>
+				</>
 			) : (
-				<div>
+				<>
+					<div className="divSound">
+						<img
+							className="icSound"
+							alt="Sound"
+							src={playAudio ? icSound : icMuteSound}
+							onClick={onPlayAudio}
+						/>
+					</div>
 					<img
 						src={btnLixi}
 						className="btnLixi"
@@ -50,12 +65,11 @@ const Home = () => {
 					/>
 					<ReactPlayer
 						loop
-						playing={true}
-						muted={isMute}
+						playing={playAudio}
 						url={config.audio}
 						style={{ display: "none" }}
 					/>
-				</div>
+				</>
 			)}
 		</div>
 	);
