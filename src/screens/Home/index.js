@@ -4,6 +4,7 @@ import btnLixi from "../../images/btn-lixi.png";
 import icSound from "../../images/ic_sound.png";
 import icMuteSound from "../../images/ic_sound_mute.png";
 const linkDefault = 'https://www.youtube.com/embed/78Vk-0qsRIE?autoplay=1&loop=1&controls=0'
+
 const Home = () => {
   const [isLiXi, setIsLiXi] = useState(false);
   const [isMute, setIsMute] = useState(false);
