@@ -71,6 +71,11 @@
   width: 70px;
 }
 
+.playVideo{
+  width: 700px !important;
+  height: 394px !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -85,3 +90,17 @@
     width: calc(100% * 0.7);
   }
 }
+
+@media (max-width: 450px) {
+  .playVideo{
+    width: 350px !important;
+    height: 197px !important;
+  }
+}
+
+/* @media (max-width: 750px) {
+  .playVideo{
+    width: 500px !important;
+    height: 281px !important;
+  }
+} */

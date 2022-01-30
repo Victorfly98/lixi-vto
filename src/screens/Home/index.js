@@ -32,6 +32,7 @@ const Home = () => {
 			{isLiXi ? (
 				<div style={{ position: "absolute", top: "22%" }}>
 					<ReactPlayer
+						className="playVideo"
 						loop
 						controls
 						playing={true}
