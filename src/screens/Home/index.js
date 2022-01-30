@@ -1,5 +1,5 @@
-import { Fragment, useState } from "react";
-import ReactPlayer from "react-player";
+import { useState } from "react";
+import ReactPlayer from "react-player/lazy";
 import { config } from "../../config";
 import btnLixi from "../../images/btn-lixi.png";
 import icSound from "../../images/ic_sound.png";
@@ -30,9 +30,17 @@ const Home = () => {
 			</div>
 
 			{isLiXi ? (
-				<ReactPlayer url={config.video} muted={isMute} loop playing={true} />
+				<div style={{ position: "absolute", top: "22%" }}>
+					<ReactPlayer
+						loop
+						controls
+						playing={true}
+						muted={isMute}
+						url={config.video}
+					/>
+				</div>
 			) : (
-				<Fragment>
+				<div>
 					<img
 						src={btnLixi}
 						className="btnLixi"
@@ -42,11 +50,11 @@ const Home = () => {
 					<ReactPlayer
 						loop
 						playing={true}
-						url={config.audio}
 						muted={isMute}
+						url={config.audio}
 						style={{ display: "none" }}
 					/>
-				</Fragment>
+				</div>
 			)}
 		</div>
 	);
